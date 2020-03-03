@@ -140,3 +140,14 @@ function defreq(frequency) {
 		    }
 	  return result;
 }
+
+
+//I'm expecting  an array of unique numbers
+//I'll return a number that evenly divides all numbers in nums
+function lcm (nums) {
+	  let result = nums.map(num => primeFactorization(num))
+	  .map(elem=> frequency(elem))
+	  .reduce((acc,elem) => maxFrequency(acc,elem)); 
+	  
+	  return defreq(result).reduce((a,b) => a*=b);
+}
