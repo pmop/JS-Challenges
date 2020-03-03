@@ -57,3 +57,15 @@ function allPrimes(end,start=0) {
 	  range(end,start)
 	    .filter(elem=> isPrime(elem));
 }
+
+/*Greatest common divisor - Euclidean Algorithm - Recursive*/
+function gcdRecursive(num1,num2) {
+	  let bigger = max(num1,num2);
+	  let smaller = min(num1,num2);
+	  let difference = bigger - smaller;
+	  if (difference%smaller === 0) return difference;
+	  else
+		    bigger = max(smaller,difference);
+	    smaller = min(smaller,difference);
+	    return gcdRecursive(bigger,smaller);
+}
