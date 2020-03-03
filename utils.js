@@ -16,6 +16,26 @@ function end(array) {
 }
 
 
+//Simple range function to simulate Python's range function
+//I could have turned it into a generator but I'd have to modify more code than I want now
+function range(end,start=0) {
+  let r = [];
+    for (let i = start; i <= end; ++i) r.push(i);
+      return r;
+ }
+
+// Expecting varargs, returns the smallest
+function min(...varargs) {
+	  let notUndefined = varargs.filter(elem=> typeof elem != 'undefined');
+	  return Math.min(...notUndefined);
+}
+
+// Expecting varargs, returns the greatest
+function max(...varargs) {
+	  let notUndefined = varargs.filter(elem=> typeof elem != 'undefined');
+	  return Math.max(...notUndefined);
+}
+
 // Prime checking using classic squareroot method
 function isPrime(num) {
 	let index = num-1;
@@ -32,10 +52,8 @@ function isPrime(num) {
 }
 
 
-//Simple range function to simulate Python's range function
-//I could have turned it into a generator but I'd have to modify more code than I want now
-function range(end,start=0) {
-  let r = [];
-    for (let i = start; i <= end; ++i) r.push(i);
-      return r;
- }
+//Returns range of prime numbers
+function allPrimes(end,start=0) {
+	  range(end,start)
+	    .filter(elem=> isPrime(elem));
+}
