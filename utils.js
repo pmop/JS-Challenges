@@ -104,3 +104,39 @@ function gcdRecursive(num1,num2) {
 	    smaller = min(smaller,difference);
 	    return gcdRecursive(bigger,smaller);
 }
+
+
+//I'm expecting an array of numbers and I'll return an object key:pair integer:integer representing
+////the number and it's frequency
+function frequency(numbers){
+	  let counter = {
+		    }
+	  numbers.forEach(val=> counter[val] = ~~counter[val] + 1);
+	  return counter;
+}
+
+
+//Im expecting two key value pair objects, integer:integer,
+// representing the number and its frequency
+//I'll return an object key:value integer:integer whose keys represent numbers and is
+//it's frequency, and its composed by the greatest frequency for numbers in both objects
+function maxFrequency(freq1, freq2) {
+	  let result = {};
+	  let keys = uniquefyIterative(Object.keys(freq1).concat(Object.keys(freq2)));
+
+	  keys.forEach(key => {
+		      result[key] = max(freq1[key],freq2[key]);
+		    })
+	  return result;
+}
+
+
+//Im expecting a key value pair integer:integer representing the number and its frequency
+//I'll return an array of  numbers repeated by  their frequency
+function defreq(frequency) {
+	  let result = [];
+	  for(let key in frequency) {
+		      for(let i = frequency[key]; i > 0; --i) result.push(parseInt(key));
+		    }
+	  return result;
+}
