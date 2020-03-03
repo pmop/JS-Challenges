@@ -74,6 +74,25 @@ function nextPrime(number, primeTable=_primeTable) {
 	}
 }
 
+// I'm expecting an integer and I'll return an array of primes which total quoscient is the integer
+function primeFactorization(arg, primeTable=_primeTable) {
+	let number = arg;
+	if (isPrime(number)) return [number];
+	else {
+		let p = primeTable[0];
+		let result = [];
+		while(number >= p*p) {
+			if(number%p === 0) {
+				result.push(p);
+				number /= p;
+			}
+			else p = nextPrime(p);
+		}
+		result.push(number);
+		return result;
+	}
+}
+
 /*Greatest common divisor - Euclidean Algorithm - Recursive*/
 function gcdRecursive(num1,num2) {
 	  let bigger = max(num1,num2);
