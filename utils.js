@@ -58,6 +58,22 @@ function allPrimes(end,start=0) {
 	    .filter(elem=> isPrime(elem));
 }
 
+var _primeTable = allPrimes(20);
+
+
+function nextPrime(number, primeTable=_primeTable) {
+	let index = primeTable.indexOf(number)
+	if( index >=0 ) return primeTable[index+1];
+	else {
+		//Generate a new prime and push into end of the table
+		//    //and return it
+		let _nextPrime = number+1;
+		while( !isPrime(_nextPrime) ) _nextPrime++;
+		primeTable.push(_nextPrime);
+		return _nextPrime;
+	}
+}
+
 /*Greatest common divisor - Euclidean Algorithm - Recursive*/
 function gcdRecursive(num1,num2) {
 	  let bigger = max(num1,num2);
