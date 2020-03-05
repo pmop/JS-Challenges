@@ -1,43 +1,43 @@
 //Returns an array without value at index
-export function remove(array, index) {
+function remove(array, index) {
 	  let before = array.slice(0,index);
 	  let after = array.slice(index+1);
 	  return before.concat(after);
 }
 
 //Returns the tail of the array
-export function tail(array) {
+function tail(array) {
 	  return array[array.length-1];
 }
 
 //Returns tail index
-export function end(array) {
+function end(array) {
 	  return array.length-1;
 }
 
 
-//Simple range export function to simulate Python's range export function
+//Simple range function to simulate Python's range function
 //I could have turned it into a generator but I'd have to modify more code than I want now
-export function range(end,start=0) {
+function range(end,start=0) {
   let r = [];
     for (let i = start; i <= end; ++i) r.push(i);
       return r;
  }
 
 // Expecting varargs, returns the smallest
-export function min(...varargs) {
+function min(...varargs) {
 	  let notUndefined = varargs.filter(elem=> typeof elem != 'undefined');
 	  return Math.min(...notUndefined);
 }
 
 // Expecting varargs, returns the greatest
-export function max(...varargs) {
+function max(...varargs) {
 	  let notUndefined = varargs.filter(elem=> typeof elem != 'undefined');
 	  return Math.max(...notUndefined);
 }
 
 // Prime checking using classic squareroot method
-export function isPrime(num) {
+function isPrime(num) {
 	let index = num-1;
 	const table = [false,true,true,false,true,false,true,false,false,false];
 	if (index < table.length) return table[index];
@@ -53,7 +53,7 @@ export function isPrime(num) {
 
 
 //Returns range of prime numbers
-export function allPrimes(end,start=0) {
+function allPrimes(end,start=0) {
 	  range(end,start)
 	    .filter(elem=> isPrime(elem));
 }
@@ -61,7 +61,7 @@ export function allPrimes(end,start=0) {
 var _primeTable = allPrimes(20);
 
 
-export function nextPrime(number, primeTable=_primeTable) {
+function nextPrime(number, primeTable=_primeTable) {
 	let index = primeTable.indexOf(number)
 	if( index >=0 ) return primeTable[index+1];
 	else {
@@ -75,7 +75,7 @@ export function nextPrime(number, primeTable=_primeTable) {
 }
 
 // I'm expecting an integer and I'll return an array of primes which total quoscient is the integer
-export function primeFactorization(arg, primeTable=_primeTable) {
+function primeFactorization(arg, primeTable=_primeTable) {
 	let number = arg;
 	if (isPrime(number)) return [number];
 	else {
@@ -94,7 +94,7 @@ export function primeFactorization(arg, primeTable=_primeTable) {
 }
 
 /*Greatest common divisor - Euclidean Algorithm - Recursive*/
-export function gcdRecursive(num1,num2) {
+function gcdRecursive(num1,num2) {
 	  let bigger = max(num1,num2);
 	  let smaller = min(num1,num2);
 	  let difference = bigger - smaller;
@@ -108,7 +108,7 @@ export function gcdRecursive(num1,num2) {
 
 //I'm expecting an array of numbers and I'll return an object key:pair integer:integer representing
 ////the number and it's frequency
-export function frequency(numbers){
+function frequency(numbers){
 	  let counter = {
 		    }
 	  numbers.forEach(val=> counter[val] = ~~counter[val] + 1);
@@ -120,7 +120,7 @@ export function frequency(numbers){
 // representing the number and its frequency
 //I'll return an object key:value integer:integer whose keys represent numbers and is
 //it's frequency, and its composed by the greatest frequency for numbers in both objects
-export function maxFrequency(freq1, freq2) {
+function maxFrequency(freq1, freq2) {
 	  let result = {};
 	  let keys = uniquefyIterative(Object.keys(freq1).concat(Object.keys(freq2)));
 
@@ -133,7 +133,7 @@ export function maxFrequency(freq1, freq2) {
 
 //Im expecting a key value pair integer:integer representing the number and its frequency
 //I'll return an array of  numbers repeated by  their frequency
-export function defreq(frequency) {
+function defreq(frequency) {
 	  let result = [];
 	  for(let key in frequency) {
 		      for(let i = frequency[key]; i > 0; --i) result.push(parseInt(key));
@@ -144,7 +144,7 @@ export function defreq(frequency) {
 
 //I'm expecting  an array of unique numbers
 //I'll return a number that evenly divides all numbers in nums
-export function lcm (nums) {
+function lcm (nums) {
 	  let result = nums.map(num => primeFactorization(num))
 	  .map(elem=> frequency(elem))
 	  .reduce((acc,elem) => maxFrequency(acc,elem)); 
