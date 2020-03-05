@@ -1,6 +1,6 @@
-Mind you, these challenges are from FCC. Personally, they're very very easy on data structures
-and many important data structures aren't covered like trees and their special cases, graphs,
-and so on.
+Mind you, these challenges are from FCC. Personally, they're very very easy on data structures,
+and many important data structures such as trees and their variations, graphs,
+and so on, aren't covered.
 
 
 Personally, I think the Intermediate module has more interesting challenges. First timers are advised to head on
